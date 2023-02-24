@@ -1,6 +1,10 @@
-#language: es
+#language: en
 
-  Característica: Operaciones en API Booking
+  Feature: Operaciones en API Booking
 
-    Esquema del escenario:
+    Scenario Outline: Creacion de booking
+
+      Examples:
+
+      ||
 
