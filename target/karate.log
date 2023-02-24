@@ -19,3 +19,1224 @@
 1 < Via: 1.1 vegur
 Created
 
+18:38:47.371 [main] DEBUG com.intuit.karate.Suite - [config] classpath:karate-config.js
+18:38:47.419 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 20 - ^Autenticacion con username y password correctos$
+18:38:48.970 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+
+
+18:38:49.745 [main] DEBUG com.intuit.karate - response time in milliseconds: 772
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Thu, 23 Feb 2023 23:38:52 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+18:38:49.824 [main] ERROR com.intuit.karate - src/test/java/booking/Authentications.feature:14
+And match response == '{'token' : '#string'}'
+js failed:
+>>>>
+01: '{'token' : '#string'}'
+<<<<
+org.graalvm.polyglot.PolyglotException: SyntaxError: Unnamed:1:3 Expected ; but found token
+'{'token' : '#string'}'
+   ^
+
+- org.graalvm.polyglot.Context.eval(Context.java:425)
+- com.intuit.karate.graal.JsEngine.evalForValue(JsEngine.java:139)
+- com.intuit.karate.graal.JsEngine.eval(JsEngine.java:135)
+- com.intuit.karate.core.ScenarioEngine.evalJs(ScenarioEngine.java:1190)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2143)
+- com.intuit.karate.core.ScenarioEngine.match(ScenarioEngine.java:1741)
+- com.intuit.karate.core.ScenarioEngine.matchResult(ScenarioEngine.java:174)
+
+src/test/java/booking/Authentications.feature:14
+18:38:50.764 [main] INFO  com.intuit.karate.Suite - <<fail>> feature 1 of 1 (0 remaining) src/test/java/booking/Authentications.feature
+18:41:22.284 [main] DEBUG com.intuit.karate.Suite - [config] classpath:karate-config.js
+18:41:22.284 [main] INFO  com.intuit.karate.Suite - backed up existing 'target\karate-reports' dir to: target\karate-reports_1677195682284
+18:41:22.321 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 23 - ^Autenticacion con username y password correctos$
+18:41:23.408 [main] ERROR com.intuit.karate - src/test/java/booking/Authentications.feature:8
+* def request =
+"""
+{
+   "username" : "<userName>",
+   "password" : "<password>"
+   }
+"""
+'request' is a reserved name, also use the form '* request <expression>' instead
+src/test/java/booking/Authentications.feature:8
+18:41:24.356 [main] INFO  com.intuit.karate.Suite - <<fail>> feature 1 of 1 (0 remaining) src/test/java/booking/Authentications.feature
+18:42:40.678 [main] DEBUG com.intuit.karate.Suite - [config] classpath:karate-config.js
+18:42:40.678 [main] INFO  com.intuit.karate.Suite - backed up existing 'target\karate-reports' dir to: target\karate-reports_1677195760678
+18:42:40.708 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 26 - ^Autenticacion con username y password correctos$
+18:42:41.758 [main] ERROR com.intuit.karate - src/test/java/booking/Authentications.feature:11
+* def request =
+"""
+{
+   "username" : "admin",
+   "password" : "password123"
+   }
+"""
+'request' is a reserved name, also use the form '* request <expression>' instead
+src/test/java/booking/Authentications.feature:11
+18:42:42.677 [main] INFO  com.intuit.karate.Suite - <<fail>> feature 1 of 1 (0 remaining) src/test/java/booking/Authentications.feature
+18:43:14.475 [main] DEBUG com.intuit.karate.Suite - [config] classpath:karate-config.js
+18:43:14.484 [main] INFO  com.intuit.karate.Suite - backed up existing 'target\karate-reports' dir to: target\karate-reports_1677195794482
+18:43:14.514 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 26 - ^Autenticacion con username y password correctos$
+18:43:16.061 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 45
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin","password":"password123"}
+
+18:43:16.833 [main] DEBUG com.intuit.karate - response time in milliseconds: 759
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 27
+1 < Etag: W/"1b-CQdXmMxB8IVwuJsNWi+3DTmzoKw"
+1 < Date: Thu, 23 Feb 2023 23:43:19 GMT
+1 < Via: 1.1 vegur
+{"token":"50343fd28ac8837"}
+
+18:43:16.852 [main] ERROR com.intuit.karate - src/test/java/booking/Authentications.feature:22
+And match response == '{'token' : '#string'}'
+js failed:
+>>>>
+01: '{'token' : '#string'}'
+<<<<
+org.graalvm.polyglot.PolyglotException: SyntaxError: Unnamed:1:3 Expected ; but found token
+'{'token' : '#string'}'
+   ^
+
+- org.graalvm.polyglot.Context.eval(Context.java:425)
+- com.intuit.karate.graal.JsEngine.evalForValue(JsEngine.java:139)
+- com.intuit.karate.graal.JsEngine.eval(JsEngine.java:135)
+- com.intuit.karate.core.ScenarioEngine.evalJs(ScenarioEngine.java:1190)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2143)
+- com.intuit.karate.core.ScenarioEngine.match(ScenarioEngine.java:1741)
+- com.intuit.karate.core.ScenarioEngine.matchResult(ScenarioEngine.java:174)
+
+src/test/java/booking/Authentications.feature:22
+18:43:17.742 [main] INFO  com.intuit.karate.Suite - <<fail>> feature 1 of 1 (0 remaining) src/test/java/booking/Authentications.feature
+18:44:15.407 [main] DEBUG com.intuit.karate.Suite - [config] classpath:karate-config.js
+18:44:15.421 [main] INFO  com.intuit.karate.Suite - backed up existing 'target\karate-reports' dir to: target\karate-reports_1677195855407
+18:44:15.457 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 26 - ^Autenticacion con username y password correctos$
+18:44:17.075 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 45
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin","password":"password123"}
+
+18:44:17.779 [main] DEBUG com.intuit.karate - response time in milliseconds: 704
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 27
+1 < Etag: W/"1b-GEupvSuuYxThrX/E9nRQTo2733o"
+1 < Date: Thu, 23 Feb 2023 23:44:20 GMT
+1 < Via: 1.1 vegur
+{"token":"a901eb8b4575615"}
+
+18:44:18.647 [main] INFO  com.intuit.karate.Suite - <<pass>> feature 1 of 1 (0 remaining) src/test/java/booking/Authentications.feature
+18:53:36.727 [main] DEBUG com.intuit.karate.Suite - [config] classpath:karate-config.js
+18:53:36.727 [main] INFO  com.intuit.karate.Suite - backed up existing 'target\karate-reports' dir to: target\karate-reports_1677196416727
+18:53:36.758 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 46 - ^Autenticacion con username fallido y password correcto$
+18:53:38.406 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 47
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin12","password":"password123"}
+
+18:53:39.316 [main] DEBUG com.intuit.karate - response time in milliseconds: 910
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Thu, 23 Feb 2023 23:53:41 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+18:53:40.169 [main] INFO  com.intuit.karate.Suite - <<pass>> feature 1 of 1 (0 remaining) src/test/java/booking/Authentications.feature
+19:01:08.944 [main] DEBUG com.intuit.karate.Suite - [config] classpath:karate-config.js
+19:01:08.957 [main] INFO  com.intuit.karate.Suite - backed up existing 'target\karate-reports' dir to: target\karate-reports_1677196868957
+19:03:29.424 [main] DEBUG com.intuit.karate.Suite - [config] classpath:karate-config.js
+19:03:29.430 [main] INFO  com.intuit.karate.Suite - backed up existing 'target\karate-reports' dir to: target\karate-reports_1677197009430
+19:09:08.857 [main] DEBUG com.intuit.karate.Suite - [config] classpath:karate-config.js
+19:09:08.857 [main] INFO  com.intuit.karate.Suite - backed up existing 'target\karate-reports' dir to: target\karate-reports_1677197348857
+19:09:11.610 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 45
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin","password":"password123"}
+
+19:09:18.150 [main] DEBUG com.intuit.karate - response time in milliseconds: 6525
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 27
+1 < Etag: W/"1b-CjkAnlG34g3PqdDrvbvaq9GJAjA"
+1 < Date: Fri, 24 Feb 2023 00:09:20 GMT
+1 < Via: 1.1 vegur
+{"token":"5f72462a3234821"}
+
+19:09:18.197 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 47
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin12","password":"password123"}
+
+19:09:19.852 [main] DEBUG com.intuit.karate - response time in milliseconds: 1655
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:09:21 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:09:19.876 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 47
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin","password":"password12345"}
+
+19:09:20.657 [main] DEBUG com.intuit.karate - response time in milliseconds: 781
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:09:22 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:09:20.673 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 49
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin12","password":"password12345"}
+
+19:09:22.817 [main] DEBUG com.intuit.karate - response time in milliseconds: 2142
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:09:25 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:09:24.198 [main] INFO  com.intuit.karate.Suite - <<pass>> feature 1 of 1 (0 remaining) src/test/java/booking/Authentications.feature
+19:09:51.730 [main] DEBUG com.intuit.karate.Suite - [config] classpath:karate-config.js
+19:09:51.753 [main] INFO  com.intuit.karate.Suite - backed up existing 'target\karate-reports' dir to: target\karate-reports_1677197391746
+19:09:51.809 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 26 - ^Autenticacion con .*$
+19:09:54.166 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 45
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin","password":"password123"}
+
+19:09:55.402 [main] DEBUG com.intuit.karate - response time in milliseconds: 1231
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 27
+1 < Etag: W/"1b-m8Xda5IBXm5zVm9OUzA1QXLXOlI"
+1 < Date: Fri, 24 Feb 2023 00:09:57 GMT
+1 < Via: 1.1 vegur
+{"token":"4f440ae2eeb4ddd"}
+
+19:09:55.424 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 27 - ^Autenticacion con .*$
+19:09:55.455 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 47
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin12","password":"password123"}
+
+19:09:56.501 [main] DEBUG com.intuit.karate - response time in milliseconds: 1046
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:09:58 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:09:56.501 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 28 - ^Autenticacion con .*$
+19:09:56.516 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 47
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin","password":"password12345"}
+
+19:09:57.935 [main] DEBUG com.intuit.karate - response time in milliseconds: 1419
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:10:00 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:09:57.939 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 29 - ^Autenticacion con .*$
+19:09:57.951 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 49
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin12","password":"password12345"}
+
+19:09:59.564 [main] DEBUG com.intuit.karate - response time in milliseconds: 1613
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:10:01 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:09:59.580 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 30 - ^Autenticacion con .*$
+19:09:59.596 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 29
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"","password":""}
+
+19:10:00.700 [main] DEBUG com.intuit.karate - response time in milliseconds: 1104
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:10:02 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:10:00.708 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 31 - ^Autenticacion con .*$
+19:10:00.739 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 37
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"null","password":"null"}
+
+19:10:02.137 [main] DEBUG com.intuit.karate - response time in milliseconds: 1398
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:10:04 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:10:03.576 [main] INFO  com.intuit.karate.Suite - <<pass>> feature 1 of 1 (0 remaining) src/test/java/booking/Authentications.feature
+19:11:37.437 [main] DEBUG com.intuit.karate.Suite - [config] classpath:karate-config.js
+19:11:37.447 [main] INFO  com.intuit.karate.Suite - backed up existing 'target\karate-reports' dir to: target\karate-reports_1677197497437
+19:11:37.496 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 26 - ^Autenticacion con .*$
+19:11:39.849 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 45
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin","password":"password123"}
+
+19:11:41.392 [main] DEBUG com.intuit.karate - response time in milliseconds: 1528
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 27
+1 < Etag: W/"1b-Nu64YdeSfkmhtvXrldIuf1G5hw4"
+1 < Date: Fri, 24 Feb 2023 00:11:43 GMT
+1 < Via: 1.1 vegur
+{"token":"2788ebc01d4775f"}
+
+19:11:41.471 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 27 - ^Autenticacion con .*$
+19:11:41.487 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 47
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin12","password":"password123"}
+
+19:11:42.689 [main] DEBUG com.intuit.karate - response time in milliseconds: 1202
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:11:45 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:11:42.689 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 28 - ^Autenticacion con .*$
+19:11:42.705 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 47
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin","password":"password12345"}
+
+19:11:50.241 [main] DEBUG com.intuit.karate - response time in milliseconds: 7535
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:11:52 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:11:50.243 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 29 - ^Autenticacion con .*$
+19:11:50.266 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 49
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin12","password":"password12345"}
+
+19:11:51.299 [main] DEBUG com.intuit.karate - response time in milliseconds: 1033
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:11:53 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:11:51.304 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 30 - ^Autenticacion con .*$
+19:11:51.307 [main] ERROR com.intuit.karate - src/test/java/booking/Authentications.feature:11
+* def requestAuth =
+"""
+{
+   "username" : ,
+   "password" : 
+   }
+"""
+net.minidev.json.parser.ParseException: Unexpected character (}) at position 40.
+src/test/java/booking/Authentications.feature:11
+19:11:51.322 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 31 - ^Autenticacion con .*$
+19:11:51.338 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 33
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":null,"password":null}
+
+19:11:53.180 [main] DEBUG com.intuit.karate - response time in milliseconds: 1842
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:11:55 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:11:54.669 [main] INFO  com.intuit.karate.Suite - <<fail>> feature 1 of 1 (0 remaining) src/test/java/booking/Authentications.feature
+19:14:23.183 [main] DEBUG com.intuit.karate.Suite - [config] classpath:karate-config.js
+19:14:23.187 [main] INFO  com.intuit.karate.Suite - backed up existing 'target\karate-reports' dir to: target\karate-reports_1677197663187
+19:14:23.234 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 26 - ^Autenticacion con .*$
+19:14:25.740 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 45
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin","password":"password123"}
+
+19:14:26.989 [main] DEBUG com.intuit.karate - response time in milliseconds: 1237
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 27
+1 < Etag: W/"1b-DigC2VxcQEZD3wM/SlVDGSxCw94"
+1 < Date: Fri, 24 Feb 2023 00:14:29 GMT
+1 < Via: 1.1 vegur
+{"token":"7b77a76aaecf229"}
+
+19:14:27.029 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 27 - ^Autenticacion con .*$
+19:14:27.068 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 47
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin12","password":"password123"}
+
+19:14:28.089 [main] DEBUG com.intuit.karate - response time in milliseconds: 1021
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:14:30 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:14:28.089 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 28 - ^Autenticacion con .*$
+19:14:28.113 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 47
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin","password":"password12345"}
+
+19:14:29.144 [main] DEBUG com.intuit.karate - response time in milliseconds: 1031
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:14:31 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:14:29.160 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 29 - ^Autenticacion con .*$
+19:14:29.177 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 49
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin12","password":"password12345"}
+
+19:14:29.932 [main] DEBUG com.intuit.karate - response time in milliseconds: 753
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:14:32 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:14:29.936 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 30 - ^Autenticacion con .*$
+19:14:29.950 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 29
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"","password":""}
+
+19:14:31.266 [main] DEBUG com.intuit.karate - response time in milliseconds: 1316
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:14:33 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:14:31.270 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 31 - ^Autenticacion con .*$
+19:14:31.285 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 33
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":null,"password":null}
+
+19:14:32.481 [main] DEBUG com.intuit.karate - response time in milliseconds: 1196
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:14:34 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:14:34.690 [main] INFO  com.intuit.karate.Suite - <<pass>> feature 1 of 1 (0 remaining) src/test/java/booking/Authentications.feature
+19:16:00.702 [main] DEBUG com.intuit.karate.Suite - [config] classpath:karate-config.js
+19:16:00.702 [main] INFO  com.intuit.karate.Suite - backed up existing 'target\karate-reports' dir to: target\karate-reports_1677197760702
+19:16:00.766 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 26 - ^Autenticacion con .*$
+19:16:03.117 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 45
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin","password":"password123"}
+
+19:16:05.784 [main] DEBUG com.intuit.karate - response time in milliseconds: 2667
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 27
+1 < Etag: W/"1b-mGTuk2fg4FSrfVQ2GU11KRDrGN4"
+1 < Date: Fri, 24 Feb 2023 00:16:08 GMT
+1 < Via: 1.1 vegur
+{"token":"99ec16dadf5a649"}
+
+19:16:05.816 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 27 - ^Autenticacion con .*$
+19:16:05.848 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 47
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin12","password":"password123"}
+
+19:16:07.110 [main] DEBUG com.intuit.karate - response time in milliseconds: 1262
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:16:09 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:16:07.110 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 28 - ^Autenticacion con .*$
+19:16:07.126 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 47
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin","password":"password12345"}
+
+19:16:08.215 [main] DEBUG com.intuit.karate - response time in milliseconds: 1089
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:16:10 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:16:08.231 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 29 - ^Autenticacion con .*$
+19:16:08.262 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 49
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin12","password":"password12345"}
+
+19:16:09.034 [main] DEBUG com.intuit.karate - response time in milliseconds: 772
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:16:11 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:16:09.049 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 30 - ^Autenticacion con .*$
+19:16:09.112 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 29
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"","password":""}
+
+19:16:10.073 [main] DEBUG com.intuit.karate - response time in milliseconds: 961
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:16:12 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:16:10.073 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 31 - ^Autenticacion con .*$
+19:16:10.089 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 33
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":null,"password":null}
+
+19:16:11.698 [main] DEBUG com.intuit.karate - response time in milliseconds: 1609
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:16:13 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:16:13.163 [main] INFO  com.intuit.karate.Suite - <<pass>> feature 1 of 1 (0 remaining) src/test/java/booking/Authentications.feature
+19:24:09.161 [main] DEBUG com.intuit.karate.Suite - [config] classpath:karate-config.js
+19:24:09.177 [main] INFO  com.intuit.karate.Suite - backed up existing 'target\karate-reports' dir to: target\karate-reports_1677198249177
+19:24:09.225 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 26 - ^Autenticacion con .*$
+19:24:12.102 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 45
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin","password":"password123"}
+
+19:24:13.529 [main] DEBUG com.intuit.karate - response time in milliseconds: 1427
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 27
+1 < Etag: W/"1b-4ghdcvSinejMmOFTo3PD9ETtC0s"
+1 < Date: Fri, 24 Feb 2023 00:24:15 GMT
+1 < Via: 1.1 vegur
+{"token":"c5e28fb5dfa095a"}
+
+19:24:13.560 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 27 - ^Autenticacion con .*$
+19:24:13.577 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 47
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin12","password":"password123"}
+
+19:24:14.548 [main] DEBUG com.intuit.karate - response time in milliseconds: 971
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:24:16 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:24:14.550 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 28 - ^Autenticacion con .*$
+19:24:14.572 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 47
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin","password":"password12345"}
+
+19:24:16.171 [main] DEBUG com.intuit.karate - response time in milliseconds: 1599
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:24:18 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:24:16.179 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 29 - ^Autenticacion con .*$
+19:24:16.195 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 49
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin12","password":"password12345"}
+
+19:24:17.313 [main] DEBUG com.intuit.karate - response time in milliseconds: 1118
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:24:19 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:24:17.317 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 30 - ^Autenticacion con .*$
+19:24:17.343 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 29
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"","password":""}
+
+19:24:18.515 [main] DEBUG com.intuit.karate - response time in milliseconds: 1172
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:24:20 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:24:18.519 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 31 - ^Autenticacion con .*$
+19:24:18.551 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 33
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":null,"password":null}
+
+19:24:20.582 [main] DEBUG com.intuit.karate - response time in milliseconds: 2031
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:24:22 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:24:20.586 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 32 - ^Autenticacion con .*$
+19:24:20.601 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 34
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin","password":""}
+
+19:24:21.923 [main] DEBUG com.intuit.karate - response time in milliseconds: 1322
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:24:24 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:24:21.923 [main] ERROR com.intuit.karate - src/test/java/booking/Authentications.feature:22
+And match response == {"token" : "#string"}
+match failed: EQUALS
+  $ | not equal | actual does not contain key - 'token' (MAP:MAP)
+  {"reason":"Bad credentials"}
+  {"token":"#string"}
+
+
+src/test/java/booking/Authentications.feature:22
+19:24:23.459 [main] INFO  com.intuit.karate.Suite - <<fail>> feature 1 of 1 (0 remaining) src/test/java/booking/Authentications.feature
+19:26:50.386 [main] DEBUG com.intuit.karate.Suite - [config] classpath:karate-config.js
+19:26:50.393 [main] INFO  com.intuit.karate.Suite - backed up existing 'target\karate-reports' dir to: target\karate-reports_1677198410393
+19:26:50.440 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 26 - ^Autenticacion con .*$
+19:26:52.835 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 45
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin","password":"password123"}
+
+19:26:54.526 [main] DEBUG com.intuit.karate - response time in milliseconds: 1691
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 27
+1 < Etag: W/"1b-nid0nOEJF17zlw0kPDaTDj6DlaM"
+1 < Date: Fri, 24 Feb 2023 00:26:56 GMT
+1 < Via: 1.1 vegur
+{"token":"1910972ac9bdb6f"}
+
+19:26:54.565 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 27 - ^Autenticacion con .*$
+19:26:54.596 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 47
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin12","password":"password123"}
+
+19:26:56.045 [main] DEBUG com.intuit.karate - response time in milliseconds: 1449
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:26:58 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:26:56.045 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 28 - ^Autenticacion con .*$
+19:26:56.095 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 47
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin","password":"password12345"}
+
+19:26:57.268 [main] DEBUG com.intuit.karate - response time in milliseconds: 1173
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:26:59 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:26:57.269 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 29 - ^Autenticacion con .*$
+19:26:57.316 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 49
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin12","password":"password12345"}
+
+19:26:59.000 [main] DEBUG com.intuit.karate - response time in milliseconds: 1684
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:27:00 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:26:59.008 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 30 - ^Autenticacion con .*$
+19:26:59.026 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 29
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"","password":""}
+
+19:27:02.988 [main] DEBUG com.intuit.karate - response time in milliseconds: 3962
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:27:05 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:27:02.988 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 31 - ^Autenticacion con .*$
+19:27:03.003 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 33
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":null,"password":null}
+
+19:27:04.011 [main] DEBUG com.intuit.karate - response time in milliseconds: 1008
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:27:06 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:27:04.026 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 32 - ^Autenticacion con .*$
+19:27:04.026 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 34
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin","password":""}
+
+19:27:05.357 [main] DEBUG com.intuit.karate - response time in milliseconds: 1331
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:27:07 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:27:05.357 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 33 - ^Autenticacion con .*$
+19:27:05.366 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 42
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"","password":"password12345"}
+
+19:27:06.359 [main] DEBUG com.intuit.karate - response time in milliseconds: 993
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:27:08 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:27:06.375 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 34 - ^Autenticacion con .*$
+19:27:06.390 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 42
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":null,"password":"password123"}
+
+19:27:07.501 [main] DEBUG com.intuit.karate - response time in milliseconds: 1111
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:27:09 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:27:07.501 [main] INFO  c.intuit.karate.core.FeatureRuntime - found scenario at line: 35 - ^Autenticacion con .*$
+19:27:07.532 [main] DEBUG com.intuit.karate - request:
+1 > POST https://restful-booker.herokuapp.com/auth
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 36
+1 > Host: restful-booker.herokuapp.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+1 > Accept-Encoding: gzip,deflate
+{"username":"admin","password":null}
+
+19:27:08.720 [main] DEBUG com.intuit.karate - response time in milliseconds: 1188
+1 < 200
+1 < Server: Cowboy
+1 < Connection: keep-alive
+1 < X-Powered-By: Express
+1 < Content-Type: application/json; charset=utf-8
+1 < Content-Length: 28
+1 < Etag: W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"
+1 < Date: Fri, 24 Feb 2023 00:27:11 GMT
+1 < Via: 1.1 vegur
+{"reason":"Bad credentials"}
+
+19:27:10.264 [main] INFO  com.intuit.karate.Suite - <<pass>> feature 1 of 1 (0 remaining) src/test/java/booking/Authentications.feature
