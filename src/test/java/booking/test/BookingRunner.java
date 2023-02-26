@@ -1,4 +1,4 @@
-package booking;
+package booking.test;
 
 import com.intuit.karate.Runner;
 import com.intuit.karate.junit5.Karate;
