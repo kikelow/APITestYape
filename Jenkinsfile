@@ -19,18 +19,18 @@ pipeline{
                }
            }
        }
-
-       post {
-           always {
-                publishHTML target: [
-                           allowMissing: false,
-                           alwaysLinkToLastBuild: false,
-                           keepAll: true,
-                           reportDir: '"${WORKSPACE}/target/karate-reports"',
-                           reportFiles: 'karate-summary.html',
-                           reportName: 'Api Test Yape Report'
-                         ]
-           }
-       }
     }
+
+    post {
+       always {
+            publishHTML target: [
+               allowMissing: false,
+               alwaysLinkToLastBuild: false,
+               keepAll: true,
+               reportDir: '"${WORKSPACE}/target/karate-reports"',
+               reportFiles: 'karate-summary.html',
+               reportName: 'Api Test Yape Report'
+             ]
+       }
+   }
 }
