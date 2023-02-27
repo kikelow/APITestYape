@@ -1,5 +1,5 @@
 #language: en
-
+@Booking
 Feature: Operaciones en API Booking
 
   Background:

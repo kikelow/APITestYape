@@ -3,30 +3,34 @@ pipeline{
 
     stages{
 
-            stage('Checkout SCM'){
-                steps{
-                    checkout scm
-                }
-            }
-
         stage('Build'){
             steps{
-                sh './gradlew build'
+                script {
+                   sh 'chmod +x gradlew'
+                   sh './gradlew clean build'
+                }
             }
         }
 
-       stage('Test'){
+       stage('Test Execution'){
            steps{
-               echo 'Test...'
-           }
-       }
-
-       stage('Report'){
-           steps{
-               echo 'Report...'
+               script {
+                  sh './gradlew test --tests BookingRunner'
+               }
            }
        }
     }
 
-
+    post {
+       always {
+            publishHTML target: [
+               allowMissing: false,
+               alwaysLinkToLastBuild: false,
+               keepAll: true,
+               reportDir: 'build/reports/tests/test',
+               reportFiles: '',
+               reportName: 'Api Test Yape Report-'
+             ]
+       }
+   }
 }
