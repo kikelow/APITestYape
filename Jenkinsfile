@@ -30,7 +30,9 @@ pipeline{
                reportDir: 'build/karate-reports',
                reportFiles: 'booking.test.Authentications.html',
                reportName: 'Api Test Yape Report-'
-             ],
+             ]
+         },
+         always{
              publishHTML target: [
                 allowMissing: false,
                 alwaysLinkToLastBuild: false,
@@ -38,7 +40,9 @@ pipeline{
                 reportDir: 'build/karate-reports',
                 reportFiles: 'booking.test.Authentications.html',
                 reportName: 'Api Test Yape Report-'
-              ],
+              ]
+         },
+         always{
               publishHTML target: [
                  allowMissing: false,
                  alwaysLinkToLastBuild: false,
@@ -47,6 +51,7 @@ pipeline{
                  reportFiles: 'booking.test.Authentications.html',
                  reportName: 'Api Test Yape Report-'
                ]
+            }
        }
    }
 }
