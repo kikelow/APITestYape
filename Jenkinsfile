@@ -3,18 +3,11 @@ pipeline{
 
     stages{
 
-        stage('Build'){
-            steps{
-                script {
-                   sh 'chmod +x gradlew'
-                   sh './gradlew clean build'
-                }
-            }
-        }
-
        stage('Test Execution'){
            steps{
                script {
+                  sh 'chmod +x gradlew'
+                  sh './gradlew clean build'
                   sh './gradlew test --tests BookingRunner'
                }
            }
@@ -27,10 +20,26 @@ pipeline{
                allowMissing: false,
                alwaysLinkToLastBuild: false,
                keepAll: true,
-               reportDir: 'build/reports/tests/test',
-               reportFiles: '',
-               reportName: 'Api Test Yape Report-'
+               reportDir: 'build/karate-reports',
+               reportFiles: 'booking.test.Authentications.html',
+               reportName: 'Feature Authentications Report'
              ]
+             publishHTML target: [
+                allowMissing: false,
+                alwaysLinkToLastBuild: false,
+                keepAll: true,
+                reportDir: 'build/karate-reports',
+                reportFiles: 'booking.test.BookingOperations.html',
+                reportName: 'BookingOperations Report'
+              ]
+              publishHTML target: [
+                 allowMissing: false,
+                 alwaysLinkToLastBuild: false,
+                 keepAll: true,
+                 reportDir: 'build/karate-reports',
+                 reportFiles: 'booking.test.CheckHealth.html',
+                 reportName: 'CheckHealth Report'
+               ]
        }
    }
 }
