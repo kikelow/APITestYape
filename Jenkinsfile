@@ -8,6 +8,8 @@ pipeline{
                 script {
                    sh 'chmod +x gradlew'
                    sh './gradlew clean build'
+                    sh 'cd /var/jenkins_home/workspace/ApiTestYape'
+                    sh 'ls'
                 }
             }
         }
