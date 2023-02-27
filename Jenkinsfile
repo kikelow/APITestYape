@@ -27,9 +27,9 @@ pipeline{
                allowMissing: false,
                alwaysLinkToLastBuild: false,
                keepAll: true,
-               reportDir: '"${WORKSPACE}/target/karate-reports"',
+               reportDir: 'target/karate-reports',
                reportFiles: 'karate-summary.html',
-               reportName: 'Api Test Yape Report'
+               reportName: 'Api Test Yape Report-'
              ]
        }
    }
