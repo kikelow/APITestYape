@@ -9,7 +9,9 @@ pipeline{
                    sh 'chmod +x gradlew'
                                        sh 'cd /var/jenkins_home/workspace/ApiTestYape'
                                        sh 'ls'
-                   sh './gradlew clean build'
+                                       sh 'cd target'
+                                       sh 'ls'
+      //             sh './gradlew clean build'
 
                 }
             }
