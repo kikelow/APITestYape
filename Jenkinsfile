@@ -27,10 +27,26 @@ pipeline{
                allowMissing: false,
                alwaysLinkToLastBuild: false,
                keepAll: true,
-               reportDir: 'build/reports/tests/test',
-               reportFiles: '',
+               reportDir: 'build/karate-reports',
+               reportFiles: 'booking.test.Authentications.html',
                reportName: 'Api Test Yape Report-'
-             ]
+             ],
+             publishHTML target: [
+                allowMissing: false,
+                alwaysLinkToLastBuild: false,
+                keepAll: true,
+                reportDir: 'build/karate-reports',
+                reportFiles: 'booking.test.Authentications.html',
+                reportName: 'Api Test Yape Report-'
+              ],
+              publishHTML target: [
+                 allowMissing: false,
+                 alwaysLinkToLastBuild: false,
+                 keepAll: true,
+                 reportDir: 'build/karate-reports',
+                 reportFiles: 'booking.test.Authentications.html',
+                 reportName: 'Api Test Yape Report-'
+               ]
        }
    }
 }
