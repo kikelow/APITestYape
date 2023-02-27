@@ -1,5 +1,6 @@
 #language: en
 
+@Auth
 Feature: Autenticacion API
 
   Background:

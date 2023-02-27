@@ -1,4 +1,5 @@
 #language: en
+  @CheckHealth
   Feature: Verificar estado de Booking API
 
     Background:
