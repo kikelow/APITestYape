@@ -3,18 +3,11 @@ pipeline{
 
     stages{
 
-        stage('Build'){
-            steps{
-                script {
-                   sh 'chmod +x gradlew'
-                   sh './gradlew clean build'
-                }
-            }
-        }
-
        stage('Test Execution'){
            steps{
                script {
+                  sh 'chmod +x gradlew'
+                  sh './gradlew clean build'
                   sh './gradlew test --tests BookingRunner'
                }
            }
