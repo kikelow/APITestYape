@@ -31,7 +31,7 @@ pipeline{
                reportFiles: 'booking.test.Authentications.html',
                reportName: 'Api Test Yape Report-'
              ]
-         },
+         }
          always{
              publishHTML target: [
                 allowMissing: false,
@@ -41,7 +41,7 @@ pipeline{
                 reportFiles: 'booking.test.Authentications.html',
                 reportName: 'Api Test Yape Report-'
               ]
-         },
+         }
          always{
               publishHTML target: [
                  allowMissing: false,
