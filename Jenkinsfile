@@ -28,7 +28,7 @@ pipeline{
                alwaysLinkToLastBuild: false,
                keepAll: true,
                reportDir: 'build/reports/tests/test',
-               reportFiles: 'index.html',
+               reportFiles: '',
                reportName: 'Api Test Yape Report-'
              ]
        }
