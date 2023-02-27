@@ -7,12 +7,7 @@ pipeline{
             steps{
                 script {
                    sh 'chmod +x gradlew'
-                                       sh 'cd /var/jenkins_home/workspace/ApiTestYape'
-                                       sh 'ls'
-                                       sh 'cd target'
-                                       sh 'ls'
-      //             sh './gradlew clean build'
-
+                   sh './gradlew clean build'
                 }
             }
         }
@@ -32,8 +27,8 @@ pipeline{
                allowMissing: false,
                alwaysLinkToLastBuild: false,
                keepAll: true,
-               reportDir: 'target/karate-reports',
-               reportFiles: 'karate-summary.html',
+               reportDir: 'build/reports/tests/test',
+               reportFiles: 'index.html',
                reportName: 'Api Test Yape Report-'
              ]
        }
