@@ -3,30 +3,33 @@ pipeline{
 
     stages{
 
-            stage('Checkout SCM'){
-                steps{
-                    checkout scm
-                }
-            }
-
         stage('Build'){
             steps{
                 script {
                    sh 'chmod +x gradlew'
-                   sh './gradlew build'
+                   sh './gradlew clean build'
                 }
             }
         }
 
        stage('Test'){
            steps{
-               echo 'Test...'
+               script {
+                  sh './gradlew test --tests BookingRunner'
+               }
            }
        }
 
-       stage('Report'){
+       stage('Generate Report'){
            steps{
-               echo 'Report...'
+                publishHTML target: [
+                           allowMissing: false,
+                           alwaysLinkToLastBuild: false,
+                           keepAll: true,
+                           reportDir: '"${WORKSPACE}/target/karate-reports"',
+                           reportFiles: 'karate-summary.html',
+                           reportName: 'Api Test Yape Report'
+                         ]
            }
        }
     }
