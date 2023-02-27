@@ -20,8 +20,8 @@ pipeline{
            }
        }
 
-       stage('Generate Report'){
-           steps{
+       post {
+           always {
                 publishHTML target: [
                            allowMissing: false,
                            alwaysLinkToLastBuild: false,
@@ -33,6 +33,4 @@ pipeline{
            }
        }
     }
-
-
 }
