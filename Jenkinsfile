@@ -7,14 +7,15 @@ pipeline{
             steps{
                 script {
                    sh 'chmod +x gradlew'
+                                       sh 'cd /var/jenkins_home/workspace/ApiTestYape'
+                                       sh 'ls'
                    sh './gradlew clean build'
-                    sh 'cd /var/jenkins_home/workspace/ApiTestYape'
-                    sh 'ls'
+
                 }
             }
         }
 
-       stage('Test'){
+       stage('Test Execution'){
            steps{
                script {
                   sh './gradlew test --tests BookingRunner'
