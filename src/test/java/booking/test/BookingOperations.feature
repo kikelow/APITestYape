@@ -5,6 +5,10 @@ Feature: Operaciones en API Booking
   Background:
 
     * url baseUrl
+    * def username = java.lang.System.getenv('AUTHORIZATION_USERNAME');
+    * def password = java.lang.System.getenv('AUTHORIZATION_PASSWORD');
+    * def tokenAuth = java.lang.System.getenv('AUTHORIZATION_TOKEN');
+
 
   Scenario Outline: Creacion exitosa de booking
 
@@ -318,7 +322,7 @@ Feature: Operaciones en API Booking
     * def resultCreateBooking = callonce read('../common/CreateBooking.feature'){ baseUrl: '#(baseUrl)', depositpaid : <depositpaid>  }
     * def idBooking = resultCreateBooking.response.bookingid
 
-    * def resultGetTokenAuth = callonce read('../common/GetTokenAutentication.feature'){ baseUrl: '#(baseUrl)' , responseAuth : <responseAuth> }
+    * def resultGetTokenAuth = callonce read('../common/GetTokenAutentication.feature'){ baseUrl: '#(baseUrl)' , responseAuth : <responseAuth> , username : <username> , password : <password>}
     * def tokenAuth = resultGetTokenAuth.response.token
 
     * def requestUpdateBooking =
@@ -347,8 +351,8 @@ Feature: Operaciones en API Booking
 
     Examples:
 
-      | username | password    | responseAuth          | newfirstname | newlastname | newtotalprice | newdepositpaid | newcheckin | newcheckout | newadditionalneeds | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
-      | admin    | password123 | {"token" : "#string"} | Harlen       | Renteria    | 600000        | true           | 2023-03-10 | 2023-03-30  | Sabanas  extras    | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | username    | password    | responseAuth          | newfirstname | newlastname | newtotalprice | newdepositpaid | newcheckin | newcheckout | newadditionalneeds | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
+      | #(username) | #(password) | {"token" : "#string"} | Harlen       | Renteria    | 600000        | true           | 2023-03-10 | 2023-03-30  | Sabanas  extras    | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
 
   Scenario Outline: Actualizacion completa exitosa de booking con header de Autorizacion
 
@@ -373,7 +377,7 @@ Feature: Operaciones en API Booking
     Given path '/booking/'+idBooking
     And header Content-Type = 'application/json'
     And header Accept = 'application/json'
-    And header Authorization = 'Basic '+'<autorization>'
+    And header Authorization = 'Basic '+ tokenAuth
     And request requestUpdateBooking
     When method put
     Then status 200
@@ -381,8 +385,8 @@ Feature: Operaciones en API Booking
 
     Examples:
 
-      | autorization             | responseAuth          | newfirstname | newlastname | newtotalprice | newdepositpaid | newcheckin | newcheckout | newadditionalneeds | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | Harlen       | Renteria    | 600000        | true           | 2023-03-10 | 2023-03-30  | Sabanas  extras    | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | responseAuth          | newfirstname | newlastname | newtotalprice | newdepositpaid | newcheckin | newcheckout | newadditionalneeds | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
+      | {"token" : "#string"} | Harlen       | Renteria    | 600000        | true           | 2023-03-10 | 2023-03-30  | Sabanas  extras    | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
 
   Scenario Outline: Actualizacion completa de booking con valor string en campo de totalprice
 
@@ -422,7 +426,7 @@ Feature: Operaciones en API Booking
     Given path '/booking/'+idBooking
     And header Content-Type = 'application/json'
     And header Accept = 'application/json'
-    And header Authorization = 'Basic '+'<autorization>'
+    And header Authorization = 'Basic '+tokenAuth
     And request requestUpdateBooking
     When method put
     Then status 200
@@ -430,8 +434,8 @@ Feature: Operaciones en API Booking
 
     Examples:
 
-      | autorization             | responseAuth          | newtotalprice | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | abcd          | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | responseAuth          | newtotalprice | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
+      | {"token" : "#string"} | abcd          | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
 
   Scenario Outline: Actualizacion completa de booking con valor string (cadena de texto) en el query param ID
 
@@ -471,7 +475,7 @@ Feature: Operaciones en API Booking
     Given path '/booking/'+'abcd'
     And header Content-Type = 'application/json'
     And header Accept = 'application/json'
-    And header Authorization = 'Basic '+'<autorization>'
+    And header Authorization = 'Basic '+tokenAuth
     And request requestUpdateBooking
     When method put
     Then status 405
@@ -479,8 +483,8 @@ Feature: Operaciones en API Booking
 
     Examples:
 
-      | autorization             | responseAuth          | newtotalprice | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | abcd          | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | responseAuth          | newtotalprice | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
+      | {"token" : "#string"} | abcd          | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
 
   Scenario Outline: Actualizacion completa de booking con camppos faltantes en el request
 
@@ -503,7 +507,7 @@ Feature: Operaciones en API Booking
     Given path '/booking/'+idBooking
     And header Content-Type = 'application/json'
     And header Accept = 'application/json'
-    And header Authorization = 'Basic '+'<autorization>'
+    And header Authorization = 'Basic '+tokenAuth
     And request requestUpdateBooking
     When method put
     Then status 400
@@ -511,8 +515,8 @@ Feature: Operaciones en API Booking
 
     Examples:
 
-      | autorization             | responseAuth          | newfirstname | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | Harlen       | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | responseAuth          | newfirstname | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
+      | {"token" : "#string"} | Harlen       | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
 
   Scenario Outline: Actualizacion completa de booking sin id de booking
 
@@ -534,7 +538,7 @@ Feature: Operaciones en API Booking
     Given path '/booking'
     And header Content-Type = 'application/json'
     And header Accept = 'application/json'
-    And header Authorization = 'Basic '+'<autorization>'
+    And header Authorization = 'Basic '+tokenAuth
     And request requestUpdateBooking
     When method put
     Then status 404
@@ -542,8 +546,8 @@ Feature: Operaciones en API Booking
 
     Examples:
 
-      | autorization             | responseAuth          | newfirstname | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | Harlen       | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | responseAuth          | newfirstname | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
+      | {"token" : "#string"} | Harlen       | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
 
 
   Scenario Outline: Actualizacion parcial exitosa de booking con header de Autorizacion
@@ -556,7 +560,7 @@ Feature: Operaciones en API Booking
     Given path '/booking/'+idBooking
     And header Content-Type = 'application/json'
     And header Accept = 'application/json'
-    And header Authorization = 'Basic '+'<autorization>'
+    And header Authorization = 'Basic '+tokenAuth
     And request requestUpdateBooking
     When method patch
     Then status 200
@@ -564,14 +568,14 @@ Feature: Operaciones en API Booking
 
     Examples:
 
-      | autorization             | responseAuth          | responseUpdateBookingExpected                | requestUpdateBooking                     | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | {"firstname" : "Harlen"}                     | {"firstname" : "Harlen"}                 | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | {"lastname" : "Rodriguez"}                   | {"lastname" : "Rodriguez"}               | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | {"totalprice" : 5000000}                     | {"totalprice" : 5000000}                 | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | {"depositpaid" : true}                       | {"depositpaid" : true}                   | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | {"bookingdates":{"checkin" : "2023-03-01"}}  | {"bookingdates.checkin" : "2023-03-01"}  | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | {"bookingdates":{"checkout" : "2023-03-15"}} | {"bookingdates.checkout" : "2023-03-15"} | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | {"additionalneeds" : "Almuerzo"}             | {"additionalneeds" : "Almuerzo"}         | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | responseAuth          | responseUpdateBookingExpected                | requestUpdateBooking                     | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
+      | {"token" : "#string"} | {"firstname" : "Harlen"}                     | {"firstname" : "Harlen"}                 | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | {"token" : "#string"} | {"lastname" : "Rodriguez"}                   | {"lastname" : "Rodriguez"}               | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | {"token" : "#string"} | {"totalprice" : 5000000}                     | {"totalprice" : 5000000}                 | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | {"token" : "#string"} | {"depositpaid" : true}                       | {"depositpaid" : true}                   | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | {"token" : "#string"} | {"bookingdates":{"checkin" : "2023-03-01"}}  | {"bookingdates.checkin" : "2023-03-01"}  | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | {"token" : "#string"} | {"bookingdates":{"checkout" : "2023-03-15"}} | {"bookingdates.checkout" : "2023-03-15"} | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | {"token" : "#string"} | {"additionalneeds" : "Almuerzo"}             | {"additionalneeds" : "Almuerzo"}         | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
 
 
   Scenario Outline: Actualizacion parcial exitosa de booking con cookie
@@ -579,7 +583,7 @@ Feature: Operaciones en API Booking
     * def resultCreateBooking = callonce read('../common/CreateBooking.feature'){ baseUrl: '#(baseUrl)', depositpaid : <depositpaid>  }
     * def idBooking = resultCreateBooking.response.bookingid
 
-    * def resultGetTokenAuth = callonce read('../common/GetTokenAutentication.feature'){ baseUrl: '#(baseUrl)' , responseAuth : <responseAuth> }
+    * def resultGetTokenAuth = callonce read('../common/GetTokenAutentication.feature'){ baseUrl: '#(baseUrl)' , responseAuth : <responseAuth>, username : <username> , password : <password> }
     * def tokenAuth = resultGetTokenAuth.response.token
 
     * def requestUpdateBooking = <requestUpdateBooking>
@@ -595,14 +599,14 @@ Feature: Operaciones en API Booking
 
     Examples:
 
-      | username | password    | responseAuth          | responseUpdateBookingExpected                | requestUpdateBooking                     | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
-      | admin    | password123 | {"token" : "#string"} | {"firstname" : "Harlen"}                     | {"firstname" : "Harlen"}                 | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | admin    | password123 | {"token" : "#string"} | {"lastname" : "Rodriguez"}                   | {"lastname" : "Rodriguez"}               | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | admin    | password123 | {"token" : "#string"} | {"totalprice" : 5000000}                     | {"totalprice" : 5000000}                 | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | admin    | password123 | {"token" : "#string"} | {"depositpaid" : true}                       | {"depositpaid" : true}                   | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | admin    | password123 | {"token" : "#string"} | {"bookingdates":{"checkin" : "2023-03-01"}}  | {"bookingdates.checkin" : "2023-03-01"}  | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | admin    | password123 | {"token" : "#string"} | {"bookingdates":{"checkout" : "2023-03-15"}} | {"bookingdates.checkout" : "2023-03-15"} | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | admin    | password123 | {"token" : "#string"} | {"additionalneeds" : "Almuerzo"}             | {"additionalneeds" : "Almuerzo"}         | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | username    | password    | responseAuth          | responseUpdateBookingExpected                | requestUpdateBooking                     | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
+      | #(username) | #(password) | {"token" : "#string"} | {"firstname" : "Harlen"}                     | {"firstname" : "Harlen"}                 | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | #(username) | #(password) | {"token" : "#string"} | {"lastname" : "Rodriguez"}                   | {"lastname" : "Rodriguez"}               | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | #(username) | #(password) | {"token" : "#string"} | {"totalprice" : 5000000}                     | {"totalprice" : 5000000}                 | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | #(username) | #(password) | {"token" : "#string"} | {"depositpaid" : true}                       | {"depositpaid" : true}                   | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | #(username) | #(password) | {"token" : "#string"} | {"bookingdates":{"checkin" : "2023-03-01"}}  | {"bookingdates.checkin" : "2023-03-01"}  | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | #(username) | #(password) | {"token" : "#string"} | {"bookingdates":{"checkout" : "2023-03-15"}} | {"bookingdates.checkout" : "2023-03-15"} | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | #(username) | #(password) | {"token" : "#string"} | {"additionalneeds" : "Almuerzo"}             | {"additionalneeds" : "Almuerzo"}         | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
 
 
   Scenario Outline: Actualizacion parcial exitosa de booking con auth cookie y campos vacios
@@ -610,7 +614,7 @@ Feature: Operaciones en API Booking
     * def resultCreateBooking = callonce read('../common/CreateBooking.feature'){ baseUrl: '#(baseUrl)', depositpaid : <depositpaid>  }
     * def idBooking = resultCreateBooking.response.bookingid
 
-    * def resultGetTokenAuth = callonce read('../common/GetTokenAutentication.feature'){ baseUrl: '#(baseUrl)' , responseAuth : <responseAuth> }
+    * def resultGetTokenAuth = callonce read('../common/GetTokenAutentication.feature'){ baseUrl: '#(baseUrl)' , responseAuth : <responseAuth> , username : <username> , password : <password>}
     * def tokenAuth = resultGetTokenAuth.response.token
 
     * def requestUpdateBooking = <requestUpdateBooking>
@@ -626,12 +630,12 @@ Feature: Operaciones en API Booking
 
     Examples:
 
-      | username | password    | responseAuth          | responseUpdateBookingExpected                | requestUpdateBooking           | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
-      | admin    | password123 | {"token" : "#string"} | {"firstname" : ""}                           | {"firstname" : ""}             | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | admin    | password123 | {"token" : "#string"} | {"lastname" : ""}                            | {"lastname" : ""}              | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | admin    | password123 | {"token" : "#string"} | {"bookingdates":{"checkin" : "0NaN-aN-aN"}}  | {"bookingdates.checkin" : ""}  | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | admin    | password123 | {"token" : "#string"} | {"bookingdates":{"checkout" : "0NaN-aN-aN"}} | {"bookingdates.checkout" : ""} | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | admin    | password123 | {"token" : "#string"} | {"additionalneeds" : ""}                     | {"additionalneeds" : ""}       | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | username    | password    | responseAuth          | responseUpdateBookingExpected                | requestUpdateBooking           | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
+      | #(username) | #(password) | {"token" : "#string"} | {"firstname" : ""}                           | {"firstname" : ""}             | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | #(username) | #(password) | {"token" : "#string"} | {"lastname" : ""}                            | {"lastname" : ""}              | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | #(username) | #(password) | {"token" : "#string"} | {"bookingdates":{"checkin" : "0NaN-aN-aN"}}  | {"bookingdates.checkin" : ""}  | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | #(username) | #(password) | {"token" : "#string"} | {"bookingdates":{"checkout" : "0NaN-aN-aN"}} | {"bookingdates.checkout" : ""} | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | #(username) | #(password) | {"token" : "#string"} | {"additionalneeds" : ""}                     | {"additionalneeds" : ""}       | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
 
 
   Scenario Outline: Actualizacion parcial exitosa de booking con auth cookie y campos con formato contrario
@@ -639,7 +643,7 @@ Feature: Operaciones en API Booking
     * def resultCreateBooking = callonce read('../common/CreateBooking.feature'){ baseUrl: '#(baseUrl)', depositpaid : <depositpaid>  }
     * def idBooking = resultCreateBooking.response.bookingid
 
-    * def resultGetTokenAuth = callonce read('../common/GetTokenAutentication.feature'){ baseUrl: '#(baseUrl)' , responseAuth : <responseAuth> }
+    * def resultGetTokenAuth = callonce read('../common/GetTokenAutentication.feature'){ baseUrl: '#(baseUrl)' , responseAuth : <responseAuth>, username : <username> , password : <password> }
     * def tokenAuth = resultGetTokenAuth.response.token
 
     * def requestUpdateBooking = <requestUpdateBooking>
@@ -655,14 +659,14 @@ Feature: Operaciones en API Booking
 
     Examples:
 
-      | username | password    | responseAuth          | responseUpdateBookingExpected             | requestUpdateBooking                 | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
-      | admin    | password123 | {"token" : "#string"} | {"firstname" : "#null"}                   | {"firstname" : 4545}                 | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | admin    | password123 | {"token" : "#string"} | {"lastname" : "#null"}                    | {"lastname" : 7897}                  | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | admin    | password123 | {"token" : "#string"} | {"totalprice" : #null}                    | {"totalprice" : "valor"}             | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | admin    | password123 | {"token" : "#string"} | {"depositpaid" : true}                    | {"depositpaid" : true}               | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | admin    | password123 | {"token" : "#string"} | {"bookingdates":{"checkin" : "#string"}}  | {"bookingdates.checkin" : 20230301}  | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | admin    | password123 | {"token" : "#string"} | {"bookingdates":{"checkout" : "#string"}} | {"bookingdates.checkout" : 20230315} | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | admin    | password123 | {"token" : "#string"} | {"additionalneeds" : "#null"}             | {"additionalneeds" : 12345}          | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | username    | password    | responseAuth          | responseUpdateBookingExpected             | requestUpdateBooking                 | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
+      | #(username) | #(password) | {"token" : "#string"} | {"firstname" : "#null"}                   | {"firstname" : 4545}                 | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | #(username) | #(password) | {"token" : "#string"} | {"lastname" : "#null"}                    | {"lastname" : 7897}                  | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | #(username) | #(password) | {"token" : "#string"} | {"totalprice" : #null}                    | {"totalprice" : "valor"}             | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | #(username) | #(password) | {"token" : "#string"} | {"depositpaid" : true}                    | {"depositpaid" : true}               | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | #(username) | #(password) | {"token" : "#string"} | {"bookingdates":{"checkin" : "#string"}}  | {"bookingdates.checkin" : 20230301}  | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | #(username) | #(password) | {"token" : "#string"} | {"bookingdates":{"checkout" : "#string"}} | {"bookingdates.checkout" : 20230315} | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | #(username) | #(password) | {"token" : "#string"} | {"additionalneeds" : "#null"}             | {"additionalneeds" : 12345}          | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
 
   Scenario Outline: Actualizacion parcial de booking con ID string
 
@@ -674,7 +678,7 @@ Feature: Operaciones en API Booking
     Given path '/booking/'+'idBooking'
     And header Content-Type = 'application/json'
     And header Accept = 'application/json'
-    And header Authorization = 'Basic '+'<autorization>'
+    And header Authorization = 'Basic '+tokenAuth
     And request requestUpdateBooking
     When method patch
     Then status 405
@@ -682,14 +686,14 @@ Feature: Operaciones en API Booking
 
     Examples:
 
-      | autorization             | responseAuth          | responseUpdateBookingExpected | requestUpdateBooking                     | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | Method Not Allowed            | {"firstname" : "Harlen"}                 | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | Method Not Allowed            | {"lastname" : "Rodriguez"}               | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | Method Not Allowed            | {"totalprice" : 5000000}                 | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | Method Not Allowed            | {"depositpaid" : true}                   | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | Method Not Allowed            | {"bookingdates.checkin" : "2023-03-01"}  | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | Method Not Allowed            | {"bookingdates.checkout" : "2023-03-15"} | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | Method Not Allowed            | {"additionalneeds" : "Almuerzo"}         | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | responseAuth          | responseUpdateBookingExpected | requestUpdateBooking                     | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
+      | {"token" : "#string"} | Method Not Allowed            | {"firstname" : "Harlen"}                 | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | {"token" : "#string"} | Method Not Allowed            | {"lastname" : "Rodriguez"}               | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | {"token" : "#string"} | Method Not Allowed            | {"totalprice" : 5000000}                 | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | {"token" : "#string"} | Method Not Allowed            | {"depositpaid" : true}                   | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | {"token" : "#string"} | Method Not Allowed            | {"bookingdates.checkin" : "2023-03-01"}  | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | {"token" : "#string"} | Method Not Allowed            | {"bookingdates.checkout" : "2023-03-15"} | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | {"token" : "#string"} | Method Not Allowed            | {"additionalneeds" : "Almuerzo"}         | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
 
   Scenario Outline: Actualizacion parcial de booking con ID vacio
 
@@ -701,7 +705,7 @@ Feature: Operaciones en API Booking
     Given path '/booking'
     And header Content-Type = 'application/json'
     And header Accept = 'application/json'
-    And header Authorization = 'Basic '+'<autorization>'
+    And header Authorization = 'Basic '+tokenAuth
     And request requestUpdateBooking
     When method patch
     Then status 404
@@ -709,14 +713,14 @@ Feature: Operaciones en API Booking
 
     Examples:
 
-      | autorization             | responseAuth          | responseUpdateBookingExpected | requestUpdateBooking                     | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | Not Found                     | {"firstname" : "Harlen"}                 | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | Not Found                     | {"lastname" : "Rodriguez"}               | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | Not Found                     | {"totalprice" : 5000000}                 | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | Not Found                     | {"depositpaid" : true}                   | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | Not Found                     | {"bookingdates.checkin" : "2023-03-01"}  | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | Not Found                     | {"bookingdates.checkout" : "2023-03-15"} | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | Not Found                     | {"additionalneeds" : "Almuerzo"}         | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | responseAuth          | responseUpdateBookingExpected | requestUpdateBooking                     | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
+      | {"token" : "#string"} | Not Found                     | {"firstname" : "Harlen"}                 | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | {"token" : "#string"} | Not Found                     | {"lastname" : "Rodriguez"}               | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | {"token" : "#string"} | Not Found                     | {"totalprice" : 5000000}                 | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | {"token" : "#string"} | Not Found                     | {"depositpaid" : true}                   | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | {"token" : "#string"} | Not Found                     | {"bookingdates.checkin" : "2023-03-01"}  | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | {"token" : "#string"} | Not Found                     | {"bookingdates.checkout" : "2023-03-15"} | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | {"token" : "#string"} | Not Found                     | {"additionalneeds" : "Almuerzo"}         | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
 
 
   Scenario Outline: Eliminacion exitosa de booking con Auth cookie
@@ -724,7 +728,7 @@ Feature: Operaciones en API Booking
     * def resultCreateBooking = callonce read('../common/CreateBooking.feature'){ baseUrl: '#(baseUrl)', depositpaid : <depositpaid>  }
     * def idBooking = resultCreateBooking.response.bookingid
 
-    * def resultGetTokenAuth = callonce read('../common/GetTokenAutentication.feature'){ baseUrl: '#(baseUrl)' , responseAuth : <responseAuth> }
+    * def resultGetTokenAuth = callonce read('../common/GetTokenAutentication.feature'){ baseUrl: '#(baseUrl)' , responseAuth : <responseAuth>, username : <username> , password : <password> }
     * def tokenAuth = resultGetTokenAuth.response.token
 
 
@@ -735,8 +739,8 @@ Feature: Operaciones en API Booking
     And match response == 'Created'
 
     Examples:
-      | username | password    | responseAuth          | newfirstname | newlastname | newtotalprice | newdepositpaid | newcheckin | newcheckout | newadditionalneeds | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
-      | admin    | password123 | {"token" : "#string"} | Harlen       | Renteria    | 600000        | true           | 2023-03-10 | 2023-03-30  | Sabanas  extras    | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | username    | password    | responseAuth          | newfirstname | newlastname | newtotalprice | newdepositpaid | newcheckin | newcheckout | newadditionalneeds | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
+      | #(username) | #(password) | {"token" : "#string"} | Harlen       | Renteria    | 600000        | true           | 2023-03-10 | 2023-03-30  | Sabanas  extras    | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
 
 
   Scenario Outline: Eliminacion exitosa de booking con header Authorization
@@ -745,14 +749,14 @@ Feature: Operaciones en API Booking
     * def idBooking = resultCreateBooking.response.bookingid
 
     Given path '/booking/'+idBooking
-    And header Authorization = 'Basic '+'<autorization>'
+    And header Authorization = 'Basic '+tokenAuth
     When method delete
     Then status 201
     And match response == 'Created'
 
     Examples:
-      | autorization             | responseAuth          | newfirstname | newlastname | newtotalprice | newdepositpaid | newcheckin | newcheckout | newadditionalneeds | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
-      | YWRtaW46cGFzc3dvcmQxMjM= | {"token" : "#string"} | Harlen       | Renteria    | 600000        | true           | 2023-03-10 | 2023-03-30  | Sabanas  extras    | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | responseAuth          | newfirstname | newlastname | newtotalprice | newdepositpaid | newcheckin | newcheckout | newadditionalneeds | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
+      | {"token" : "#string"} | Harlen       | Renteria    | 600000        | true           | 2023-03-10 | 2023-03-30  | Sabanas  extras    | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
 
 
   Scenario Outline: Eliminacion de booking id en formato string
@@ -760,7 +764,7 @@ Feature: Operaciones en API Booking
     * def resultCreateBooking = callonce read('../common/CreateBooking.feature'){ baseUrl: '#(baseUrl)', depositpaid : <depositpaid>  }
     * def idBooking = resultCreateBooking.response.bookingid
 
-    * def resultGetTokenAuth = callonce read('../common/GetTokenAutentication.feature'){ baseUrl: '#(baseUrl)' , responseAuth : <responseAuth> }
+    * def resultGetTokenAuth = callonce read('../common/GetTokenAutentication.feature'){ baseUrl: '#(baseUrl)' , responseAuth : <responseAuth> , username : <username> , password : <password>  }
     * def tokenAuth = resultGetTokenAuth.response.token
 
     Given path '/booking/'+'idBooking'
@@ -770,8 +774,8 @@ Feature: Operaciones en API Booking
     And match response == 'Method Not Allowed'
 
     Examples:
-      | username | password    | responseAuth          | newfirstname | newlastname | newtotalprice | newdepositpaid | newcheckin | newcheckout | newadditionalneeds | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
-      | admin    | password123 | {"token" : "#string"} | Harlen       | Renteria    | 600000        | true           | 2023-03-10 | 2023-03-30  | Sabanas  extras    | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | username    | password    | responseAuth          | newfirstname | newlastname | newtotalprice | newdepositpaid | newcheckin | newcheckout | newadditionalneeds | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
+      | #(username) | #(password) | {"token" : "#string"} | Harlen       | Renteria    | 600000        | true           | 2023-03-10 | 2023-03-30  | Sabanas  extras    | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
 
 
   Scenario Outline: Eliminacion de booking id vacio
@@ -779,7 +783,7 @@ Feature: Operaciones en API Booking
     * def resultCreateBooking = callonce read('../common/CreateBooking.feature'){ baseUrl: '#(baseUrl)', depositpaid : <depositpaid>  }
     * def idBooking = resultCreateBooking.response.bookingid
 
-    * def resultGetTokenAuth = callonce read('../common/GetTokenAutentication.feature'){ baseUrl: '#(baseUrl)' , responseAuth : <responseAuth> }
+    * def resultGetTokenAuth = callonce read('../common/GetTokenAutentication.feature'){ baseUrl: '#(baseUrl)' , responseAuth : <responseAuth> , username : <username> , password : <password>}
     * def tokenAuth = resultGetTokenAuth.response.token
 
     Given path '/booking'
@@ -789,5 +793,5 @@ Feature: Operaciones en API Booking
     And match response == 'Not Found'
 
     Examples:
-      | username | password    | responseAuth          | newfirstname | newlastname | newtotalprice | newdepositpaid | newcheckin | newcheckout | newadditionalneeds | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
-      | admin    | password123 | {"token" : "#string"} | Harlen       | Renteria    | 600000        | true           | 2023-03-10 | 2023-03-30  | Sabanas  extras    | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |
+      | username    | password    | responseAuth          | newfirstname | newlastname | newtotalprice | newdepositpaid | newcheckin | newcheckout | newadditionalneeds | firstname | lastname | totalprice | depositpaid | checkin    | checkout   | additionalneeds |
+      | #(username) | #(password) | {"token" : "#string"} | Harlen       | Renteria    | 600000        | true           | 2023-03-10 | 2023-03-30  | Sabanas  extras    | Harinson  | Palacios | 1000       | false       | 2023-02-15 | 2023-02-25 | dinner2         |

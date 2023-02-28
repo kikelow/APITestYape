@@ -6,6 +6,9 @@ Feature: Autenticacion API
   Background:
 
     * url baseUrl
+    * def username = java.lang.System.getenv('AUTHORIZATION_USERNAME');
+    * def password = java.lang.System.getenv('AUTHORIZATION_PASSWORD');
+
 
   Scenario Outline: Autenticacion con <testCase>
 
@@ -23,15 +26,15 @@ Feature: Autenticacion API
     And match response == <responseAuth>
 
     Examples:
-      | userName  | password        | responseAuth                 | testCase                           |
-      | "admin"   | "password123"   | {"token" : "#string"}        | Credenciales correctas             |
-      | "admin12" | "password123"   | {"reason":"Bad credentials"} | Usuario errado y password correcto |
-      | "admin"   | "password12345" | {"reason":"Bad credentials"} | Usuario correcto y password errado |
-      | "admin12" | "password12345" | {"reason":"Bad credentials"} | Usuario errado y password errado   |
-      | ""        | ""              | {"reason":"Bad credentials"} | Usuario y password vacios          |
-      | null      | null            | {"reason":"Bad credentials"} | Usuario y password nulos           |
-      | "admin"   | ""              | {"reason":"Bad credentials"} | Credenciales correctas             |
-      | ""        | "password12345" | {"reason":"Bad credentials"} | Credenciales correctas             |
-      | null      | "password123"   | {"reason":"Bad credentials"} | Usuario nulo y password ingresado  |
-      | "admin"   | null            | {"reason":"Bad credentials"} | Usuario ingresado y password nulo  |
+      | userName    | password        | responseAuth                 | testCase                           |
+      | #(username) | #(password)     | {"token" : "#string"}        | Credenciales correctas             |
+      | "admin12"   | #(password)     | {"reason":"Bad credentials"} | Usuario errado y password correcto |
+      | #(username) | "password12345" | {"reason":"Bad credentials"} | Usuario correcto y password errado |
+      | "admin12"   | "password12345" | {"reason":"Bad credentials"} | Usuario errado y password errado   |
+      | ""          | ""              | {"reason":"Bad credentials"} | Usuario y password vacios          |
+      | null        | null            | {"reason":"Bad credentials"} | Usuario y password nulos           |
+      | #(username) | ""              | {"reason":"Bad credentials"} | Usuario correcto y password vacio  |
+      | ""          | #(password)     | {"reason":"Bad credentials"} | Usuario vacio y password correcto  |
+      | null        | #(password)     | {"reason":"Bad credentials"} | Usuario nulo y password ingresado  |
+      | #(username) | null            | {"reason":"Bad credentials"} | Usuario ingresado y password nulo  |
 
