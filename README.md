@@ -29,3 +29,15 @@ Nombre runner = BookingRunner
 * AUTHORIZATION_TOKEN
 
 Los valores estaran descritos en la documentacion de la API. https://restful-booker.herokuapp.com/apidoc/index.html
+
+
+### Tipo de pruebas:
+
+- Preubas de intergracion
+- Pruebas funcionales
+
+### Técnicas de testing usadas:
+
+- Transición de estado
+- Pruebas basada en la experiencia
+- Prueba basada en la tabla de decisiones
